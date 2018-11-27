@@ -1,1 +1,6 @@
-django >=1.9, <2
+Django == 2.0.8
+
+websockets == 6.0
+gunicorn == 19.9.0
+
+
