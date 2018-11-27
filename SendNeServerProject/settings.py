@@ -99,7 +99,7 @@ DATABASES = {
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default="postgres:///postgresql-flat-29622", conn_max_age=500)
+    'default': dj_database_url.config('DATABASE_URL')
 }
 
 # Password validation
