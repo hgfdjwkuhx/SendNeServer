@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fccdcaf1-fe1e-4a6f-a31d-a6b8d182d687" name="Default" comment="" />
+    <list default="true" id="fccdcaf1-fe1e-4a6f-a31d-a6b8d182d687" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,7 +12,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="55" selection-start-column="55" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,6 +35,7 @@
         <option value="$PROJECT_DIR$/SendNeSocketsApp/urls.py" />
         <option value="$PROJECT_DIR$/SendNeServerProject/urls.py" />
         <option value="$PROJECT_DIR$/SendNeServerProject/settings.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -51,7 +64,12 @@
         <subPane>
           <expand>
             <path>
-              <item name="SendNeServerProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SendNeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SendNeServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SendNeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SendNeServer" type="462c0819:PsiDirectoryNode" />
               <item name="SendNeServerProject" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -76,6 +94,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\CPBLK\Documents\GitHub\SendNeServer" />
       <recent name="D:\Users\CPBLK\Desktop\proj\SenderMe project\SendNeServer\01\SendNeServerProject\SendNeServerProject" />
       <recent name="D:\Users\CPBLK\Desktop\proj\SenderMe project\SendNeServer\01\SendNeServerProject\SendNeSocketsApp" />
     </key>
@@ -132,20 +151,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="796" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.32961586" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32868218" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2535211" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="SciView" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2568746" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.4" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -163,22 +183,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/Commons/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#445#449#0" />
-            <element signature="e#490#1181#0" />
-            <element signature="e#1244#1248#0" />
-            <element signature="e#1300#2250#0" />
-            <element signature="e#2399#2403#0" />
-            <element signature="e#2459#3362#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -205,29 +213,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SendNeServerProject/admin.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/SendNeServerProject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="e#320#329#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../PyCharm/main env/Python/Python36/Lib/site-packages/django/core/servers/basehttp.py">
+    <entry file="file://$PROJECT_DIR$/../../../../PyCharm/main env/Python/Python36/Lib/site-packages/django/core/servers/basehttp.py" />
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state>
+          <caret column="55" selection-start-column="55" selection-end-column="55" />
         </state>
       </provider>
     </entry>
