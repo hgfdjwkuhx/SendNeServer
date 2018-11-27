@@ -13,5 +13,5 @@ gunicorn == 19.9.0
 
 
 dj-database-url==0.4.0
-psycopg2==2.7.1
+psycopg2==2.7.4
 
