@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fccdcaf1-fe1e-4a6f-a31d-a6b8d182d687" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SendNeSocketsApp/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/SendNeSocketsApp/handlers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/handlers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="33">
+              <caret line="449" column="93" lean-forward="true" selection-start-line="449" selection-start-column="93" selection-end-line="449" selection-end-column="93" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#13372#15325#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,11 +54,11 @@
         <option value="$PROJECT_DIR$/SendNeServerProject/urls.py" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/SendNeSocketsApp/handlers.py" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/management/commands/run_senderNeWS_server.py" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/utils.py" />
         <option value="$PROJECT_DIR$/SendNeServerProject/settings.py" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/SendNeSocketsApp/handlers.py" />
       </list>
     </option>
   </component>
@@ -58,7 +71,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-15" />
     <option name="y" value="-15" />
     <option name="width" value="1950" />
@@ -80,7 +93,7 @@
             <path>
               <item name="SendNeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="SendNeServer" type="462c0819:PsiDirectoryNode" />
-              <item name="SendNeServerProject" type="462c0819:PsiDirectoryNode" />
+              <item name="SendNeSocketsApp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -261,16 +274,6 @@
     <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/management/Common/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="577" column="34" lean-forward="true" selection-start-line="577" selection-start-column="34" selection-end-line="577" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -374,6 +377,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="449" column="93" lean-forward="true" selection-start-line="449" selection-start-column="93" selection-end-line="449" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#13372#15325#0" />
+          </folding>
         </state>
       </provider>
     </entry>

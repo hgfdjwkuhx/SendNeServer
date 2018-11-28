@@ -392,6 +392,8 @@ def main_handler(websocket, path):
         else:
             # CC check TempUser Socket
             if session_id.__len__() == 86:
+                print("\n################# is TempUser ######################")
+
                 tempUser_model = get_tempUserProcessorInfo_from_session(session_id)
                 if tempUser_model is not None:
                     tempUser_objectId = tempUser_model.user_objectId
@@ -443,6 +445,9 @@ def main_handler(websocket, path):
 
                                         try:
                                             # yield from router.MessageRouter(data)()
+                                            #as temp for temp user
+                                            #temp user uses original user router
+                                            yield from router.UserRequestRouter(data, tempUser_objectId)()
                                             pass
                                         except Exception as e:
                                             logger.error('could not route msg', e)
