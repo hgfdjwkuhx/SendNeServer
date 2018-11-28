@@ -391,7 +391,7 @@ def main_handler(websocket, path):
 
         else:
             # CC check TempUser Socket
-            if session_id.__len__() == 86:
+            if session_id.__len__() == 68:
                 print("\n################# is TempUser ######################")
 
                 tempUser_model = get_tempUserProcessorInfo_from_session(session_id)
@@ -424,14 +424,21 @@ def main_handler(websocket, path):
                                 tempUser_model.processor_info.processor_ObjectId)
                             if processor_ws is not None:
                                 # 07 check exsist
-                                if tempUsers_ws_connections.get(tempUser_objectId) is not None:
-                                    del tempUsers_ws_connections[tempUser_objectId]
+                                #if tempUsers_ws_connections.get(tempUser_objectId) is not None:
+                                #   del tempUsers_ws_connections[tempUser_objectId]
 
-                                tempUsers_ws_connections[tempUser_objectId] = {
-                                "websocket": websocket,
-                                "tempUser_objectId": tempUser_objectId,
-                                "processor_ws" : processor_ws
+                                users_ws_connections[tempUser_objectId] = {
+                                    "processor_objectId": processor_ws["processor_objectId"],
+                                    "websocket": websocket,
+                                    "user_objectId": tempUser_objectId
                                 }
+
+                                #tempUsers_ws_connections[tempUser_objectId] = {
+                                #"websocket": websocket,
+                                #"tempUser_objectId": tempUser_objectId,
+                                #"processor_ws" : processor_ws
+                                #}
+
                                 try:
                                     while websocket.open:
                                         data = yield from websocket.recv()
