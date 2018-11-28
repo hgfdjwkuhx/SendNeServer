@@ -31,10 +31,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 ####### Socket Server ############
-#CHAT_WS_SERVER_HOST = 'localhost'
-CHAT_WS_SERVER_HOST = '0.0.0.0'
-#CHAT_WS_SERVER_PORT = 5002
-CHAT_WS_SERVER_PORT = environ.get('PORT')
+CHAT_WS_SERVER_HOST = 'localhost'
+#CHAT_WS_SERVER_HOST = '0.0.0.0'
+CHAT_WS_SERVER_PORT = 5002
+#CHAT_WS_SERVER_PORT = environ.get('PORT')
 CHAT_WS_SERVER_PROTOCOL = 'ws'
 #CHAT_WS_SERVER_PROTOCOL = 'https'
 
@@ -88,14 +88,7 @@ WSGI_APPLICATION = 'SendNeServerProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-'''
+
 import dj_database_url
 
 #DATABASES['default'] =  dj_database_url.config(default=os.getenv('DATABASE_URL'))
@@ -123,6 +116,8 @@ DATABASES = {
     }
 }
 '''
+
+#'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -134,8 +129,16 @@ DATABASES = {
     }
 }
 
+'''
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -177,3 +180,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
+
+#CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
