@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fccdcaf1-fe1e-4a6f-a31d-a6b8d182d687" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/SendNeServerProject/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SendNeServerProject/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SendNeServerProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SendNeServerProject/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,19 +15,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SendNeServerProject/settings.py">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
-              <folding>
-                <element signature="e#320#329#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>STATIC_ROOT</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,13 +41,13 @@
         <option value="$PROJECT_DIR$/SendNeSocketsApp/admin.py" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/urls.py" />
         <option value="$PROJECT_DIR$/SendNeServerProject/urls.py" />
-        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/handlers.py" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/management/commands/run_senderNeWS_server.py" />
         <option value="$PROJECT_DIR$/SendNeSocketsApp/utils.py" />
         <option value="$PROJECT_DIR$/SendNeServerProject/settings.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -58,7 +60,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-15" />
     <option name="y" value="-15" />
     <option name="width" value="1950" />
@@ -76,11 +78,6 @@
             <path>
               <item name="SendNeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="SendNeServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SendNeServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SendNeServer" type="462c0819:PsiDirectoryNode" />
-              <item name="SendNeServerProject" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,13 +237,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../../PyCharm/main env/Python/Python36/Lib/site-packages/django/core/servers/basehttp.py" />
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="46" selection-start-column="46" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Desktop/proj/PyCharm/main env/Python/Python36/Lib/site-packages/dj_database_url.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -254,13 +244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -304,15 +287,6 @@
         <state relative-caret-position="-663">
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/management/StoreModel/StorePeeWee/ReceiverPrivateStoreManager/PrivateStoreModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1479">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -365,13 +339,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SendNeSocketsApp/management/StoreModel/StorePeeWee/ReceiverPrivateStoreManager/PrivateStoreModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SendNeServerProject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+        <state relative-caret-position="105">
+          <caret line="180" column="1" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
           <folding>
             <element signature="e#320#329#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>

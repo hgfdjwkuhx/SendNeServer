@@ -17,7 +17,7 @@ from os import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -31,10 +31,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 ####### Socket Server ############
-CHAT_WS_SERVER_HOST = 'localhost'
-#CHAT_WS_SERVER_HOST = '0.0.0.0'
-CHAT_WS_SERVER_PORT = 5002
-#CHAT_WS_SERVER_PORT = environ.get('PORT')
+#CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_HOST = '0.0.0.0'
+#CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PORT = environ.get('PORT')
 CHAT_WS_SERVER_PROTOCOL = 'ws'
 #CHAT_WS_SERVER_PROTOCOL = 'https'
 
@@ -178,7 +178,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+#STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 
 #CRISPY_TEMPLATE_PACK = 'uni_form'
