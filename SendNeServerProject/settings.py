@@ -99,11 +99,43 @@ DATABASES = {
 import dj_database_url
 
 #DATABASES['default'] =  dj_database_url.config(default=os.getenv('DATABASE_URL'))
+'''
 DATABASES = {
     'default': dj_database_url.config('DATABASE_URL')
 }
+'''
 
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+
+
+#https://stackoverflow.com/questions/10228618/settings-databases-is-improperly-configured-error-performing-syncdb-with-djang
+#postgres://user:pass@localhost/dbname
+#HEROKU_POSTGRESQL_ONYX_URL: postgres://mkigesztkwaiqa:075d7a98e8c8b4fde6e9d9a5211dc31506c17689060c07ead092c0d3ce3ee251@ec2-50-17-203-51.compute-1.amazonaws.com:5432/d3trujo4q0vl5p
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'your_heroku_db_name',
+        'USER': 'your_heroku_db_user_name',
+        'PASSWORD': 'your_heroku_password',
+        'HOST': 'ec2-23-21-133-106.compute-1.amazonaws.com', # Or something like this
+        'PORT': '5432',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3trujo4q0vl5p',
+        'USER': 'mkigesztkwaiqa',
+        'PASSWORD': '075d7a98e8c8b4fde6e9d9a5211dc31506c17689060c07ead092c0d3ce3ee251',
+        'HOST': 'ec2-50-17-203-51.compute-1.amazonaws.com', # Or something like this
+        'PORT': '5432',
+    }
+}
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
