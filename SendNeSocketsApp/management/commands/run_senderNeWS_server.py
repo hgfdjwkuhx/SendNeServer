@@ -8,7 +8,7 @@ from SendNeSocketsApp.utils import logger
 
 
 class Command(BaseCommand):
-    help = 'Starts message center chat engine'
+    help = 'Starts request center SendNe engine'
 
     def add_arguments(self, parser):
         parser.add_argument('ssl_cert', nargs='?', type=str)
@@ -29,18 +29,7 @@ class Command(BaseCommand):
             )
         )
 
-        print("---------------------------------------------------------------------------------------------------\n" +
-              "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-        print( "\nsettings.CHAT_WS_SERVER_HOST == " + str(settings.CHAT_WS_SERVER_HOST) +
-               "\nsettings.CHAT_WS_SERVER_PORT == " + str(settings.CHAT_WS_SERVER_PORT)
-               )
-
-        print("---------------------------------------------------------------------------------------------------\n" +
-              "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-
-        logger.info('Chat server started')
+        logger.info('SendNe server started')
         #asyncio.async(handlers.new_messages_handler(channels.new_messages))
         asyncio.async(handlers.users_changed_handler(channels.users_changed))
         #asyncio.async(handlers.gone_online(channels.online))
@@ -54,8 +43,8 @@ class Command(BaseCommand):
         asyncio.async(handlers.new_processor_request_handler(channels.processor_requests))
 
         asyncio.async(handlers.processor_ack_request_handler(channels.processor_request_acks))
+        asyncio.async(handlers.processor_on_open_handler(channels.processor_on_open))
 
-        #loop = asyncio.get_event_loop()
         loop = asyncio.get_event_loop()
         loop.run_forever()
 

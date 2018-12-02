@@ -335,7 +335,36 @@ def main_handler(websocket, path):
                     del users_ws_connections[user_objectId]
             else:
                 #save request in requests DB
-                raise Exception("processor_ws is not connect")
+                #raise Exception("processor_ws is not connect")
+                print("\n-------------------- : processor_ws is not connect : ------------------------------")
+                users_ws_connections[user_objectId] = {
+                    #"processor_objectId": processor_ws["processor_objectId"],
+                    "processor_objectId": user_processor_info.processor_info.processor_ObjectId,
+                    "websocket": websocket,
+                    "user_objectId": user_objectId
+                }
+                try:
+                    while websocket.open:
+                        data = yield from websocket.recv()
+                        if not data:
+                            print("\n----- : websocket.recv() : not data : -----------")
+                            continue
+                        logger.debug(data)
+                        print("client : data == " + str(data))
+                        # as temp truing
+                        # main_tag_handler(data)
+
+                        try:
+                            yield from router.UserRequestRouter(data, user_objectId)()
+                        except Exception as e:
+                            logger.error('could not route msg', e)
+
+                except websockets.exceptions.InvalidState:  # User disconnected
+                    pass
+                finally:
+                    # del ws_connections[(user_owner, username)]
+                    # del mainUtilities_users[user_owner_model]
+                    del users_ws_connections[user_objectId]
 
     else:
         # BB check Processor Socket
@@ -465,7 +494,39 @@ def main_handler(websocket, path):
                                     del tempUsers_ws_connections[tempUser_objectId]
 
                             else:
-                                raise Exception("processor ws is not running")
+                                #raise Exception("processor ws is not running")
+                                print("\n-------------------- : processor_ws is not connect : ------------------------------")
+                                # 07 check exsist
+                                users_ws_connections[tempUser_objectId] = {
+                                    "processor_objectId": tempUser_model.processor_info.processor_ObjectId,
+                                    "websocket": websocket,
+                                    "user_objectId": tempUser_objectId
+                                }
+
+                                try:
+                                    while websocket.open:
+                                        data = yield from websocket.recv()
+                                        if not data:
+                                            print("\n----- : tempUser_websocket.recv() : not data : -----------")
+                                            continue
+                                        logger.debug(data)
+
+                                        # as temp truing
+                                        # main_tag_handler(data)
+
+                                        try:
+                                            # yield from router.MessageRouter(data)()
+                                            # as temp for temp user
+                                            # temp user uses original user router
+                                            yield from router.UserRequestRouter(data, tempUser_objectId)()
+                                            pass
+                                        except Exception as e:
+                                            logger.error('could not route msg', e)
+
+                                except websockets.exceptions.InvalidState:  # User disconnected
+                                    pass
+                                finally:
+                                    del tempUsers_ws_connections[tempUser_objectId]
                 else:
                     raise Exception("tempUser model is not exist")
 
@@ -518,7 +579,16 @@ def new_client_processor_request_handler(stream):
 
                 yield from target_message_processor(processor_ws["websocket"], req_model.row_data , True)
             else:
-                raise Exception("processor_ws is None")
+                #raise Exception("processor_ws is None")
+                # save request to db to be handling
+                print("\n-------------------- : processor_ws is not connect this Time : ------------------------------")
+                req_model.processor_objectId = user_connection.get("processor_objectId")
+                #
+                #here as later should :
+                # 1- send to client closing
+                # 2- send to client try start again later
+                # 3- tell client its requests under processing
+
         else:
             raise Exception("user connection is not exist")
 
@@ -615,4 +685,33 @@ def processor_ack_request_handler(stream):
                 raise Exception("error in node_id : null")
         else:
             raise Exception("error in packet : null")
+
+@asyncio.coroutine
+def processor_on_open_handler(stream):
+    """
+    router a request to user socket
+    """
+    # TODO: handle no
+    while True:
+        processor_objectId , packet = yield from stream.get()
+
+        handle_requests = list(storeModel.UserProcessorHandleRequest.filter(
+        (storeModel.UserProcessorHandleRequest.processor_objectId == processor_objectId) &
+        (storeModel.UserProcessorHandleRequest.request_state == storeModel.HandleRequestState.JustAdd)
+        ))
+        processor_ws = processors_ws_connections.get(processor_objectId)
+        if processor_ws is not None:
+            for req_model in handle_requests:
+                yield from target_message_processor(processor_ws["websocket"], req_model.row_data, True)
+        else:
+            raise Exception("processor_ws is None")
+            #print("\n-------------------- : processor_ws is not connect this Time : ------------------------------")
+
+
+
+
+
+
+
+
 

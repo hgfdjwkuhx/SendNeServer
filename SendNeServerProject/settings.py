@@ -30,13 +30,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+
 ####### Socket Server ############
-#CHAT_WS_SERVER_HOST = 'localhost'
+isLocal = False
+
 CHAT_WS_SERVER_HOST = '0.0.0.0'
-#CHAT_WS_SERVER_PORT = 5002
 CHAT_WS_SERVER_PORT = environ.get('PORT')
 CHAT_WS_SERVER_PROTOCOL = 'ws'
-#CHAT_WS_SERVER_PROTOCOL = 'https'
+
+if isLocal:
+    CHAT_WS_SERVER_HOST = 'localhost'
+    CHAT_WS_SERVER_PORT = 5002
 
 
 # Application definition
@@ -117,7 +121,7 @@ DATABASES = {
 }
 '''
 
-#'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -129,16 +133,15 @@ DATABASES = {
     }
 }
 
-'''
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if isLocal:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

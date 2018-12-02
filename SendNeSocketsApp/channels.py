@@ -24,6 +24,7 @@ processor_requests = asyncio.Queue()
 
 processor_request_acks = asyncio.Queue()
 
+processor_on_open = asyncio.Queue()
 
 
 

@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 
-from .channels import new_messages, users_changed, online, offline, check_online, is_typing, read_unread , send_client , client_processor_requests , processor_requests , processor_request_acks
+from .channels import new_messages, users_changed, online, offline, check_online, is_typing, read_unread , send_client , client_processor_requests , processor_requests , processor_request_acks , processor_on_open
 
 logger = logging.getLogger('django-SenderNe-ClientWS')
 
@@ -67,7 +67,8 @@ class UserRequestRouter(object):
 class ProcessorRequestRouter(object):
     MESSAGE_QUEUES = {
         'client-result' : processor_requests,
-        'node_ack': processor_request_acks
+        'node_ack': processor_request_acks,
+        'on-open' : processor_on_open
     }
 
     def __init__(self, data , processor_objectId):
