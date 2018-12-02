@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['*']
 
 
 ####### Socket Server ############
-isLocal = True
+isLocal = False
 
 CHAT_WS_SERVER_HOST = '0.0.0.0'
 CHAT_WS_SERVER_PORT = environ.get('PORT')
 CHAT_WS_SERVER_PROTOCOL = 'ws'
 
-if isLocal == False:
+if isLocal == True:
     CHAT_WS_SERVER_HOST = 'localhost'
     CHAT_WS_SERVER_PORT = 5002
 
