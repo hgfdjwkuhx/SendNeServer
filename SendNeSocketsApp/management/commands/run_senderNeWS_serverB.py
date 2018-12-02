@@ -26,18 +26,18 @@ class Command(BaseCommand):
             #context.set_ciphers('RSA')
             #ssl_context = context
 
+
             ##################
 
-
-
-        asyncio.async(
-            websockets.serve(
+        start_server = websockets.serve(
                 handlers.main_handler,
                 settings.CHAT_WS_SERVER_HOST,
                 settings.CHAT_WS_SERVER_PORT,
                 ssl=ssl_context
             )
-        )
+
+
+
 
         logger.info('SendNe server started')
         #asyncio.async(handlers.new_messages_handler(channels.new_messages))
@@ -55,8 +55,15 @@ class Command(BaseCommand):
         asyncio.async(handlers.processor_ack_request_handler(channels.processor_request_acks))
         asyncio.async(handlers.processor_on_open_handler(channels.processor_on_open))
 
-        loop = asyncio.get_event_loop()
-        loop.run_forever()
+        asyncio_as = asyncio.async(
+            start_server
+        )
+
+        asyncio.get_event_loop().run_until_complete(start_server)
+        asyncio.get_event_loop().run_forever()
+
+        #loop = asyncio.get_event_loop()
+        #loop.run_forever()
 
 
 if __name__ == '__main__':
