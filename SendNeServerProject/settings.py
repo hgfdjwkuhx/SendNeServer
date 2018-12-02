@@ -36,7 +36,7 @@ isLocal = False
 
 CHAT_WS_SERVER_HOST = '0.0.0.0'
 CHAT_WS_SERVER_PORT = environ.get('PORT')
-CHAT_WS_SERVER_PROTOCOL = 'ws'
+CHAT_WS_SERVER_PROTOCOL = 'wss'
 
 if isLocal == True:
     CHAT_WS_SERVER_HOST = 'localhost'
