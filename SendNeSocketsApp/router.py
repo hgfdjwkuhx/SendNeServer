@@ -2,7 +2,11 @@ import asyncio
 import json
 import logging
 
-from .channels import new_messages, users_changed, online, offline, check_online, is_typing, read_unread , send_client , client_processor_requests , processor_requests , processor_request_acks , processor_on_open
+from .channels import new_messages, users_changed, online, offline, check_online, is_typing, read_unread, send_client, \
+    client_processor_requests, processor_requests, processor_request_acks, processor_on_open, client_phoneDevice_oper
+
+
+from .PhoneAppManagement import PhoneApp_channels
 
 logger = logging.getLogger('django-SenderNe-ClientWS')
 
@@ -40,7 +44,9 @@ class MessageRouter(object):
 
 class UserRequestRouter(object):
     MESSAGE_QUEUES = {
-        'campaign' : client_processor_requests
+        'campaign' : client_processor_requests,
+        'device': client_phoneDevice_oper,
+        'phonapp' : PhoneApp_channels.user_tarnsfer_request_ForPhoneApp
     }
 
     def __init__(self, data , user_objectId):
@@ -61,7 +67,6 @@ class UserRequestRouter(object):
 
     def get_send_queue(self):
         return self.MESSAGE_QUEUES[self.get_packet_type()]
-
 
 
 class ProcessorRequestRouter(object):
@@ -89,3 +94,6 @@ class ProcessorRequestRouter(object):
 
     def get_send_queue(self):
         return self.MESSAGE_QUEUES[self.get_packet_type()]
+
+
+

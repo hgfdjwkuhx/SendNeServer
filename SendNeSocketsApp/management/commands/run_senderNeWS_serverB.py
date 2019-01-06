@@ -7,6 +7,11 @@ from SendNeSocketsApp import channels, handlers
 from SendNeSocketsApp.utils import logger
 
 
+from SendNeSocketsApp.management.ClientLocalOper import PhoneDevice_handlers
+
+from SendNeSocketsApp.PhoneAppManagement import PhoneApp_channels , PhoneApp_handlers
+
+
 class Command(BaseCommand):
     help = 'Starts request center SendNe engine'
 
@@ -41,7 +46,9 @@ class Command(BaseCommand):
 
         logger.info('SendNe server started')
         #asyncio.async(handlers.new_messages_handler(channels.new_messages))
+
         asyncio.async(handlers.users_changed_handler(channels.users_changed))
+
         #asyncio.async(handlers.gone_online(channels.online))
         #asyncio.async(handlers.check_online(channels.check_online))
         #asyncio.async(handlers.gone_offline(channels.offline))
@@ -54,6 +61,16 @@ class Command(BaseCommand):
 
         asyncio.async(handlers.processor_ack_request_handler(channels.processor_request_acks))
         asyncio.async(handlers.processor_on_open_handler(channels.processor_on_open))
+
+        # -------------- For User Local Oper --------------------#
+        asyncio.async(PhoneDevice_handlers.client_phone_device_oper_handler(channels.client_phoneDevice_oper))
+
+        # ---------------- Handlers For Phone App ------------------#
+        asyncio.async(PhoneApp_handlers.new_phoneApp_request_handler(PhoneApp_channels.PhoneApp_request_ForUser))
+        asyncio.async(PhoneApp_handlers.phoneApp_online_change_handler(PhoneApp_channels.phoneApp_online_change))
+
+        asyncio.async(PhoneApp_handlers.user_requset_transfer_toPhoneApp_handler(PhoneApp_channels.user_tarnsfer_request_ForPhoneApp))
+
 
         asyncio_as = asyncio.async(
             start_server

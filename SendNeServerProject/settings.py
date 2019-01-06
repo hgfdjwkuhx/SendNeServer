@@ -39,9 +39,10 @@ CHAT_WS_SERVER_PORT = environ.get('PORT')
 CHAT_WS_SERVER_PROTOCOL = 'wss'
 
 if isLocal == True:
-    CHAT_WS_SERVER_HOST = 'localhost'
+    #CHAT_WS_SERVER_HOST = 'localhost'
+    CHAT_WS_SERVER_HOST = '127.0.0.1'
     CHAT_WS_SERVER_PORT = 5002
-
+    CHAT_WS_SERVER_PROTOCOL = 'ws'
 
 # Application definition
 
@@ -137,7 +138,7 @@ if isLocal:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join("D:\\Users\\CPBLK\\Desktop\\Temp For SenderNe\\For Django Project\\DBs\\MainSharedDB\\", 'db.sqlite3'),
         }
     }
 

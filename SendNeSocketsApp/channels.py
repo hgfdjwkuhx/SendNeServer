@@ -27,7 +27,9 @@ processor_request_acks = asyncio.Queue()
 processor_on_open = asyncio.Queue()
 
 
+#-------------- For User Local Oper --------------------#
 
+client_phoneDevice_oper = asyncio.Queue()
 
 
 
@@ -41,3 +43,25 @@ def put_user_notify(conn , payload):
 #-------------- For Processors --------------------#
 
 #process_request = asyncio.Queue()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@ import threading
 
 
 # main user
-from SendNeSocketsApp.models import UserPrivateProcessorInfo , ProcessorInfo , TempUserPrivateProcessorInfo
+from SendNeSocketsApp.models import UserPrivateProcessorInfo , ProcessorInfo  , PhoneDevicePrivateUserInfo
 
 main_User_Lock = threading.Lock()
 
@@ -73,15 +73,8 @@ def get_processorInfo_from_session(session_key):
     # main_ProcessorInfo_Lock.release()
 
 main_TempUserProcessorInfo_Lock = threading.Lock()
-def get_tempUserProcessorInfo_from_session(session_key):
-    # main_TempUserProcessorInfo_Lock.acquire()
-    tempUser_model = TempUserPrivateProcessorInfo.objects.get(temp_token=session_key)
-    if tempUser_model is not None:
-        return tempUser_model
-    else:
-        raise Exception("tempUser model is not exist")
-        #return None
-    # main_TempUserProcessorInfo_Lock.release()
+
+
 
 
 
@@ -93,6 +86,8 @@ def get_dialogs_with_user(user_1, user_2):
     :return: queryset which include dialog between user_1 and user_2 (queryset can be empty)
     """
     #return Dialog.objects.filter(Q(owner=user_1, opponent=user_2) | Q(opponent=user_1, owner=user_2))
+
+
 
 
 logging.basicConfig(level=logging.DEBUG,

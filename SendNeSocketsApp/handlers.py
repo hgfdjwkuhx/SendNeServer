@@ -5,12 +5,16 @@ import websockets
 from django.contrib.auth import get_user_model
 
 from SendNeSocketsApp.Commons.BlockStates import BlockedStatu
+from SendNeSocketsApp.PhoneAppManagement import PhoneApp_handlers
+from SendNeSocketsApp.TempUserManagement.TempUser_handlers import main_temp_user_handler
 from SendNeSocketsApp.management.StoreModel.StorePeeWee.ReceiverPrivateStoreManager.PrivateStoreModel import \
     ReceiverRequestsPrivateStoreModel
+
 from . import models, router
 
 
-from .utils import get_user_from_session,get_userProcessorInfo_from_session, get_dialogs_with_user ,get_processorInfo_from_session ,get_tempUserProcessorInfo_from_session
+from .utils import get_user_from_session, get_userProcessorInfo_from_session, get_dialogs_with_user, \
+    get_processorInfo_from_session
 
 logger = logging.getLogger('handlers-private-dialog')
 
@@ -18,7 +22,10 @@ ws_connections = {}
 users_ws_connections = {}
 processors_ws_connections = {}
 
-tempUsers_ws_connections = {}
+
+#---------------- Handlers For Phone App ------------------#
+phoneApps_ws_connections = {}
+
 
 
 mainUtilities_users = {}
@@ -309,7 +316,8 @@ def main_handler(websocket, path):
                 users_ws_connections[user_objectId] = {
                     "processor_objectId" : processor_ws["processor_objectId"],
                     "websocket" : websocket ,
-                    "user_objectId" : user_objectId
+                    "user_objectId" : user_objectId,
+                    "phoneApp_dic": {}
                 }
                 try:
                     while websocket.open:
@@ -341,7 +349,8 @@ def main_handler(websocket, path):
                     #"processor_objectId": processor_ws["processor_objectId"],
                     "processor_objectId": user_processor_info.processor_info.processor_ObjectId,
                     "websocket": websocket,
-                    "user_objectId": user_objectId
+                    "user_objectId": user_objectId,
+                    "phoneApp_dic" : {}
                 }
                 try:
                     while websocket.open:
@@ -422,116 +431,16 @@ def main_handler(websocket, path):
             # CC check TempUser Socket
             if session_id.__len__() == 68:
                 print("\n################# is TempUser ######################")
-
-                tempUser_model = get_tempUserProcessorInfo_from_session(session_id)
-                if tempUser_model is not None:
-                    tempUser_objectId = tempUser_model.user_objectId
-                    # 01 check user_objectId
-                    #
-                    #
-                    #
-
-                    # 02 Check Blocked State
-                    blocked_statu = tempUser_model.blocked_state
-                    #
-                    #
-                    #
-                    #
-                    # 04 check blocked_statu
-                    if not blocked_statu == BlockedStatu.Running:
-                        # save in temp db
-                        raise Exception("Temp user is Blocked")
-                    else:
-
-                        # 05 Check processor
-                        if tempUser_model.processor_info is None:
-                            raise Exception("user have not processor info")
-
-                        else:
-                            # 06 Check processor ws
-                            processor_ws = processors_ws_connections.get(
-                                tempUser_model.processor_info.processor_ObjectId)
-                            if processor_ws is not None:
-                                # 07 check exsist
-                                #if tempUsers_ws_connections.get(tempUser_objectId) is not None:
-                                #   del tempUsers_ws_connections[tempUser_objectId]
-
-                                users_ws_connections[tempUser_objectId] = {
-                                    "processor_objectId": processor_ws["processor_objectId"],
-                                    "websocket": websocket,
-                                    "user_objectId": tempUser_objectId
-                                }
-
-                                #tempUsers_ws_connections[tempUser_objectId] = {
-                                #"websocket": websocket,
-                                #"tempUser_objectId": tempUser_objectId,
-                                #"processor_ws" : processor_ws
-                                #}
-
-                                try:
-                                    while websocket.open:
-                                        data = yield from websocket.recv()
-                                        if not data:
-                                            print("\n----- : tempUser_websocket.recv() : not data : -----------")
-                                            continue
-                                        logger.debug(data)
-
-                                        # as temp truing
-                                        # main_tag_handler(data)
-
-                                        try:
-                                            # yield from router.MessageRouter(data)()
-                                            #as temp for temp user
-                                            #temp user uses original user router
-                                            yield from router.UserRequestRouter(data, tempUser_objectId)()
-                                            pass
-                                        except Exception as e:
-                                            logger.error('could not route msg', e)
-
-                                except websockets.exceptions.InvalidState:  # User disconnected
-                                    pass
-                                finally:
-                                    del tempUsers_ws_connections[tempUser_objectId]
-
-                            else:
-                                #raise Exception("processor ws is not running")
-                                print("\n-------------------- : processor_ws is not connect : ------------------------------")
-                                # 07 check exsist
-                                users_ws_connections[tempUser_objectId] = {
-                                    "processor_objectId": tempUser_model.processor_info.processor_ObjectId,
-                                    "websocket": websocket,
-                                    "user_objectId": tempUser_objectId
-                                }
-
-                                try:
-                                    while websocket.open:
-                                        data = yield from websocket.recv()
-                                        if not data:
-                                            print("\n----- : tempUser_websocket.recv() : not data : -----------")
-                                            continue
-                                        logger.debug(data)
-
-                                        # as temp truing
-                                        # main_tag_handler(data)
-
-                                        try:
-                                            # yield from router.MessageRouter(data)()
-                                            # as temp for temp user
-                                            # temp user uses original user router
-                                            yield from router.UserRequestRouter(data, tempUser_objectId)()
-                                            pass
-                                        except Exception as e:
-                                            logger.error('could not route msg', e)
-
-                                except websockets.exceptions.InvalidState:  # User disconnected
-                                    pass
-                                finally:
-                                    del tempUsers_ws_connections[tempUser_objectId]
-                else:
-                    raise Exception("tempUser model is not exist")
+                yield from main_temp_user_handler(websocket , session_id)
 
             else:
-                logger.info("Got invalid session_id attempt to connect " + session_id)
+                # DD check TempUserPhone Socket
+                if session_id.__len__() == 66:
+                    print("\n################# is TempUserPhone Socket ######################")
+                    yield from PhoneApp_handlers.userPhone_main_handler(websocket , session_id , True)
+                else:
+                    logger.info("Got invalid session_id attempt to connect " + session_id)
+
 
 @asyncio.coroutine
 def target_message_processor(processor_ws, payload , isJson = False):
@@ -576,15 +485,14 @@ def new_client_processor_request_handler(stream):
             if processor_ws is not None:
 
                 req_model.processor_objectId = processor_ws["processor_objectId"]
-
                 yield from target_message_processor(processor_ws["websocket"], req_model.row_data , True)
             else:
-                #raise Exception("processor_ws is None")
+                # raise Exception("processor_ws is None")
                 # save request to db to be handling
                 print("\n-------------------- : processor_ws is not connect this Time : ------------------------------")
                 req_model.processor_objectId = user_connection.get("processor_objectId")
-                #
-                #here as later should :
+
+                # here as later should :
                 # 1- send to client closing
                 # 2- send to client try start again later
                 # 3- tell client its requests under processing
@@ -609,6 +517,20 @@ def target_message_user(user_ws, payload):
         logger.debug('could not send', e)
 
 
+@asyncio.coroutine
+def target_result_user(user_objectId, payload):
+    user_connection = users_ws_connections.get(user_objectId)
+    if user_connection is not None:
+        if payload is not None:
+            if type(payload) is dict:
+                yield from target_message_user(user_connection["websocket"], payload)
+            else:
+                raise Exception("error in payload : type")
+        else:
+            raise Exception("error in payload : null")
+    else:
+        # save the result in temp db users result
+        raise Exception("may user ws is close")
 
 @asyncio.coroutine
 def new_processor_request_handler(stream):
@@ -706,7 +628,6 @@ def processor_on_open_handler(stream):
         else:
             raise Exception("processor_ws is None")
             #print("\n-------------------- : processor_ws is not connect this Time : ------------------------------")
-
 
 
 
